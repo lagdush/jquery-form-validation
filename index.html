@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>jQuery form Validation</title>
+   <link rel="stylesheet" href='./style/style.css' />
+   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"></script>
+</head>
+
+<body>
+   <div class="wrapper">
+      <header class='header'>
+         <h1>jQuery Formularz Rejestracji w walidacją</h1>
+      </header>
+      <main>
+         <section class='section-form'>
+            <h2>Rejestracja</h2>
+            <small class='info'>Pola oznaczone gwiazdką są wymagane</small>
+            <form id="registration-form" name="registration-form" class="registration-form">
+               <div class="form-group">
+                  <div class='form-group--wrapper'>
+                     <label for="firstname">
+                        Imie<span class="required">*</span>:
+                     </label>
+                     <input type="text" name="firstname" id="firstname" class="form-control" required placeholder="Jan">
+                  </div>
+                  <small id='firstnameCheck' class='required'>Wpisz swoje imię</small>
+               </div>
+               <div class="form-group">
+                  <div class='form-group--wrapper'><label for="lastname">
+                        Nazwisko<span class="required">*</span>:
+                     </label>
+                     <input type="text" name="lastname" id="lastname" class="form-control" required
+                        placeholder='Kowalski'>
+                  </div>
+                  <small id='lastnameCheck' class='required'>Wpisz swoje nazwisko</small>
+               </div>
+               <div class="form-group">
+                  <div class='form-group--wrapper'>
+                     <label for="email">
+                        Email<span class="required">*</span>:
+                     </label>
+                     <input type="email" name="email" id="email" class="form-control" required
+                        placeholder="email@doc.com">
+                  </div>
+                  <small id='emailCheck' class='required'>Wpisz swój email</small>
+               </div>
+               <div class="form-group">
+                  <div class='form-group--wrapper'>
+                     <label for="phone">
+                        Telefon<span class="required">*</span>:
+                     </label>
+                     <input type="tel" name="phone" id="phone" class="form-control" required
+                        pattern="(?<!\w)(\(?(\+|00)?48\)?)?[ -]?\d{3}[ -]?\d{3}[ -]?\d{3}(?!\w)">
+                  </div>
+                  <small id='phoneCheck' class='required'>Wpisz swój numer telefonu</small>
+               </div>
+               <fieldset>
+                  <legend>Dane adresowe</legend>
+
+                  <div class="form-group">
+                     <div class='form-group--wrapper'>
+                        <label for="zip">
+                           Kod pocztowy<span class="required">*</span>:
+                        </label>
+                        <input type="text" name="zip" id="zip" class="form-control" required placeholder="xx-xxx"
+                           list='zip-code' pattern="^\d{2}[- ]{0,1}\d{3}$">
+                        <datalist id='zip-code'>
+                        </datalist>
+                     </div>
+                     <small id='zipCheck' class='required'>Wpisz kod pocztowy w formacie XX-XXX</small>
+                  </div>
+
+                  <div class="form-group">
+                     <div class='form-group--wrapper'>
+                        <label for="city">
+                           Miasto<span class="required">*</span>:
+                        </label>
+                        <input type="text" list='city-list' name="city" id="city" class="form-control" required>
+                        <datalist id='city-list'>
+                        </datalist>
+                     </div>
+                     <small id='cityCheck' class='required'>Wpisz swoje miasto lub wybierz z listy</small>
+                  </div>
+
+                  <div class="form-group">
+                     <div class='form-group--wrapper'>
+                        <label for="street">
+                           Ulica<span class="required">*</span>:
+                        </label>
+                        <input type="text" list='street-list' name="street" id="street" class="form-control" required>
+                        <datalist id='street-list'>
+                        </datalist>
+                     </div>
+                     <small id='streetCheck' class='required'>Wpisz nazwę swojej ulicy lub wybierz z listy</small>
+                  </div>
+
+                  <div class="form-group">
+                     <div class='form-group--wrapper'>
+                        <label for="house-number">
+                           Numer domu<span class="required">*</span>:
+                        </label>
+                        <input type="text" name="house-number" id="house-number" class="form-control" required>
+                     </div>
+                     <small id='houseCheck' class='required'>Podaj numer swojego domu</small>
+                  </div>
+
+                  <div class="form-group">
+                     <div class='form-group--wrapper'>
+                        <label for="flat-number">
+                           Numer mieszkania:
+                        </label>
+                        <input type="text" name="flat-number" id="flat-number" class="form-control">
+                     </div>
+                  </div>
+               </fieldset>
+               <input type="submit" id="submitbtn" value="Submit" class="btn">
+            </form>
+         </section>
+      </main>
+      <footer class='footer'>Zadanie rekrutacyjne do firmy FELG Software. Autor <a
+            href='https://github.com/lagdush'>Łukasz
+            Żurawski</a></footer>
+   </div>
+
+   <script src="index.js" type='module'></script>
+</body>
+
+</html>
