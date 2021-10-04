@@ -1,13 +1,9 @@
 export const zipCodeFormat = (zipCode) => {
-  if (zipCode.match(/[a-zA-Z]+/g)) {
+  if (!zipCode.match(/^\d{2}[- ]{0,1}\d{3}$/gm)) {
     $('#zipCheck').show();
-    return;
+    return false;
   }
-  if (zipCode.length >= 6) {
-    $('#zipCheck').show();
-    return;
-  }
-  if (zipCode.length === 5) {
+  if (zipCode.match(/^\d{2}[- ]{0,1}\d{3}$/gm) && zipCode.length === 5) {
     return zipCode.substr(0, 2) + '-' + zipCode.substr(2);
   }
   return zipCode;
