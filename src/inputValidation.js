@@ -2,19 +2,17 @@ import $ from 'jquery';
 
 const checkCityZipCode = (arrWithData) => {
   const citiesMatchZipCodeArr = arrWithData.filter(
-    (address) => address.miejscowosc === $('#city').val()
+    (address) =>
+      address.miejscowosc.toLowerCase() === $('#city').val().toLocaleLowerCase()
   );
-  if (!citiesMatchZipCodeArr.length) {
+  if ($('#zip').val() && !citiesMatchZipCodeArr.length) {
     $('#cityCheck')
       .text('Podane miasto ma inny kod pocztowy')
       .css('visibility', 'visible');
   } else {
-    $('#cityCheck')
-      .text('Podane miasto ma inny kod pocztowy')
-      .css('visibility', 'hidden');
+    $('#cityCheck').css('visibility', 'hidden');
   }
 };
-//
 const phoneNumberCheck = (phone) => {
   phone.match(/(?<!\w)(\(?(\+|00)?48\)?)?[ -]?\d{3}[ -]?\d{3}[ -]?\d{3}(?!\w)/)
     ? $('#phoneCheck').css('visibility', 'hidden')

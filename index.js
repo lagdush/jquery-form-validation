@@ -26,7 +26,7 @@ $(function () {
           $('#city').val().toLocaleLowerCase()
       );
 
-      if ($('#city').val() !== '' && !citiesMatchZipCodeArr.length) {
+      if (($('#city').val() !== '') && !citiesMatchZipCodeArr.length) {
         $('#cityCheck')
           .text('Podane miasto ma inny kod pocztowy')
           .css('visibility', 'visible');
