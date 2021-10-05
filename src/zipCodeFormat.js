@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 export const zipCodeFormat = (zipCode) => {
   if (!zipCode.match(/^\d{2}[- ]{0,1}\d{3}$/gm)) {
     $('#zipCheck').show();

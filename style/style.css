@@ -23,7 +23,7 @@ a {
 }
 
 a:hover {
-  color: var(--gray);
+  color: var(--success);
 }
 
 label {
@@ -140,7 +140,7 @@ main {
   color: var(--error-color);
 }
 
-#felg-software > a {
+#felg-software {
   visibility: hidden;
   display: block;
   text-align: center;
