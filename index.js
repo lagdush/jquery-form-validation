@@ -7,7 +7,7 @@ $(function () {
   const dropdownStreet = $('#street-list');
 
   //API calls
-  function createCityAndStreetLists() {
+  const createCityAndStreetLists = () => {
     dropdownCity.empty();
     dropdownStreet.empty();
     dropdownCity.prop('selectedIndex', 0);
@@ -18,10 +18,12 @@ $(function () {
     const correctZipCode = zipCodeFormat($('#zip').val());
     if (!correctZipCode) return;
     const url = `http://kodpocztowy.intami.pl/api/${correctZipCode}`;
-    $.getJSON(url, function (data) {
+    $.getJSON(url, (data) => {
       localStorage.setItem('data', JSON.stringify(data));
       const citiesMatchZipCodeArr = data.filter(
-        (address) => address.miejscowosc === $('#city').val()
+        (address) =>
+          address.miejscowosc.toLowerCase() ===
+          $('#city').val().toLocaleLowerCase()
       );
 
       if ($('#city').val() !== '' && !citiesMatchZipCodeArr.length) {
@@ -33,6 +35,17 @@ $(function () {
           .text('Podane miasto ma inny kod pocztowy')
           .css('visibility', 'hidden');
       }
+      if ($('#street').val() !== '') {
+        $('#streetCheck').css('visibility', 'visible');
+      } else {
+        $('#streetCheck').css('visibility', 'hidden');
+      }
+      if ($('#house-number').val() !== '') {
+        $('#houseCheck').css('visibility', 'visible');
+      } else {
+        $('#houseCheck').css('visibility', 'hidden');
+      }
+
       $('#city').attr('value', data[0].miejscowosc);
       $('#street').attr('value', data[0].ulica);
       // if zip code is equal to Felg Software address
@@ -45,7 +58,7 @@ $(function () {
         $('#flat-number').attr('value', '');
         $('#felg-software').css('visibility', 'hidden');
       }
-      $.each(data, function (key, entry) {
+      $.each(data, (key, entry) => {
         dropdownCity.append(
           $('<option></option>')
             .attr('value', entry.miejscowosc)
@@ -56,7 +69,7 @@ $(function () {
         );
       });
     });
-  }
+  };
 
   inputValidation();
 
